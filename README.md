@@ -1,1 +1,164 @@
-# wordcraft
+<p align="center">
+  <a href="../../releases">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
+      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
+    </picture>
+  </a>
+</p>
+
+<h1 align="center">WordCraft</h1>
+
+<p align="center">
+  <b>Writing and document design; an open-source, clean-room reimplementation of Microsoft Word, rebuilt in pure Rust.</b>
+</p>
+
+<p align="center">
+  A fast, open-source word processor with the Word workflow you already know: the ribbon, styles,
+  tables, track changes, references and mail merge. It reads and writes .docx, runs natively on
+  macOS, Windows, Linux and BSD, and in the browser via WebAssembly.<br>
+  <i>By the ArtCraft team.</i>
+</p>
+
+<p align="center">
+  <img alt="Written in Rust" src="https://img.shields.io/badge/written%20in-Rust-2b47b5?style=flat-square&logo=rust&logoColor=white">
+  <img alt="Runs on macOS, Windows, Linux, BSD and the web" src="https://img.shields.io/badge/runs%20on-macOS%20%C2%B7%20Windows%20%C2%B7%20Linux%20%C2%B7%20BSD%20%C2%B7%20Web-3b5bdb?style=flat-square">
+  <img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20%2F%20Apache--2.0-2b47b5?style=flat-square">
+  <img alt="Agent-drivable over MCP" src="https://img.shields.io/badge/agents-MCP%20%C2%B7%20CLI-3b5bdb?style=flat-square">
+</p>
+
+<br>
+
+<p align="center">
+  <img src="docs/images/hero.png" alt="WordCraft with the Home tab of the ribbon open over a two-page document titled The Open Studio Handbook. The Navigation pane on the left lists the document's headings, the Styles gallery shows live previews of Normal, Heading 1, Title and Subtitle, and a word in the first paragraph is selected." width="100%">
+  <br><sub><b>The Open Studio Handbook</b>, WordCraft's built-in sample: the ribbon, live Styles gallery, rulers and the Navigation pane.</sub>
+</p>
+
+
+## A tour
+
+Every screenshot below is WordCraft itself, rendered offscreen by its own UI test harness
+(`cargo run -p wordcraft-ui-egui --example ui_shot`).
+
+<table>
+<tr>
+<td width="50%" valign="top"><img src="docs/images/review.png" alt="The Review tab with Track Changes on: the word forty is inserted in magenta and thirty struck through; three commented phrases are shaded and joined by dashed leader lines to comment balloons in a grey markup area to the right of the page" width="100%"><p align="center"><sub><b>Review.</b> Track changes, comment balloons in the margin, accept and reject, spelling and grammar as you type.</sub></p></td>
+<td width="50%" valign="top"><img src="docs/images/references.png" alt="The References tab with two pages side by side: a table of contents with dotted leaders and page numbers on page one, and a styled table, numbered list and hyperlink on page two" width="100%"><p align="center"><sub><b>References.</b> Tables of contents, footnotes, citations in APA, MLA, Chicago or IEEE, index and captions.</sub></p></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><img src="docs/images/design.png" alt="The Design tab showing style-set previews; the document is set in a serif theme with plum headings underlined by thin rules and a pale diagonal DRAFT watermark behind the text" width="100%"><p align="center"><sub><b>Design.</b> Themes, style sets, paragraph spacing, watermarks, page colour and borders.</sub></p></td>
+<td width="50%" valign="top"><img src="docs/images/dark.png" alt="WordCraft in dark mode with the Insert tab open and formatting marks shown: pilcrows at paragraph ends and dots for spaces" width="100%"><p align="center"><sub><b>Dark mode</b> with formatting marks, and the Insert tab: tables, pictures, shapes, links, headers, footers, fields and symbols.</sub></p></td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/images/layout.png" alt="The Layout tab at 80% zoom: the first paragraph opens with a three-line drop cap E, a dark blue circle sits beside the second section with its paragraph wrapping around it and hyphenating art-ist at the line end, every line is numbered in the left margin and a thin blue border surrounds the page" width="100%"><p align="center"><sub><b>Layout.</b> Drop caps, text wrapping around pictures and shapes, automatic hyphenation, line numbers and page borders.</sub></p></td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/images/backstage.png" alt="The File tab start page with a Good morning greeting, thumbnails of the Blank document, Studio handbook, Letter, Résumé and Report templates, and a list of recent documents" width="100%"><p align="center"><sub><b>File.</b> Start from a template, open recent documents, edit properties, export to PDF and other formats.</sub></p></td>
+</tr>
+</table>
+
+## Why WordCraft
+
+- **Familiar.** Word's ribbon tabs, groups, shortcuts and behaviour: Enter continues a list,
+  Tab demotes it, Ctrl/⌘+B bolds the word under the caret, the Styles gallery previews styles live,
+  F4 repeats, F7 checks spelling, F8 extends the selection.
+- **Your files.** Opens and saves .docx (OOXML), and also .odt, .rtf, .html, .md, .tex (LaTeX), .txt; exports PDF
+  with real, selectable text, links and bookmarks.
+- **Fast.** Paragraph layout is cached, so typing in a 188-page document re-lays it out in about
+  1.4 ms; pages render on demand.
+- **Everywhere.** One Rust codebase for macOS, Windows, Linux, BSD and the web. No Electron, no
+  Tauri: native [egui](https://github.com/emilk/egui) on the GPU.
+- **Built for agents.** Every action is a command with an id. The same 389 commands drive the
+  ribbon, keyboard shortcuts, the command search, a command-line tool, a JSON control channel and
+  an MCP server.
+- **Private.** Spelling, grammar and everything else work offline.
+- **Open.** MIT OR Apache-2.0. Clean-room: built from public specifications and observation, with
+  every asset original or openly licensed.
+
+## Quick start
+
+[View all releases](../../releases)
+
+| Platform | Download | Run |
+|----------|----------|-----|
+| **Windows x64** | [wordcraft-x64.7z](../../releases) | Run installer → launch `wordcraft-x64.7z` |
+| **Linux x64** | [wordcraft-Linux-x64.run](../../releases) | `chmod +x` → run installer |
+| **macOS Apple Silicon** | [wordcraft-macOS-arm64.dmg](../../releases) | Open DMG → drag to Applications |
+
+## What works today
+
+| Area | Highlights |
+|---|---|
+| **Writing** | Fast typing with IME, smart quotes, AutoCorrect, list autoformat (`* `, `1. `), dashes; word, sentence, paragraph selection; drag-select; clipboard with formatting; undo/redo; find and replace with regex |
+| **Formatting** | Fonts, sizes, bold/italic/underline styles, strike, sub/superscript, caps, highlight, colours, character spacing, Format Painter, Change Case, Clear Formatting |
+| **Paragraphs** | Alignment, indents (draggable on the ruler), spacing, line spacing, tabs with leaders, borders, shading, keep with next, widow/orphan control |
+| **Styles** | Built-in style set, live gallery, Styles pane, create/modify/update styles, style sets, themes |
+| **Lists** | Bullets, numbering, multilevel, restart, set value, custom formats |
+| **Tables** | Insert by grid, merge/split, styles with banded rows, borders, shading, header rows repeated across pages, rows that split across pages, sort, formulas, text ↔ table |
+| **Pages** | Margins, orientation, size, columns, page/column/section breaks, headers and footers (first page, odd/even), page numbers, watermark, page borders, line numbers, vertical alignment, drop caps, automatic hyphenation |
+| **Objects** | Pictures (resize, crop, recolour, brightness/contrast, transparency, background removal, picture styles, rotate), shapes, text boxes, floating position with text wrapping (square, top and bottom, behind or in front of text) |
+| **References** | Table of contents, footnotes and endnotes, citations and bibliography (APA, MLA, Chicago, IEEE), captions, table of figures, cross-references, index, table of authorities |
+| **Review** | Spelling and grammar with suggestions, thesaurus, word count, comments in margin balloons or a pane, track changes, accept/reject, compare documents, restrict editing, accessibility checker, document inspector |
+| **Mailings** | Mail merge from CSV, merge fields, address block, greeting line, rules, preview, finish to a document; envelopes and labels |
+| **View** | Print layout, web layout, draft, read mode, focus, zoom, one/multiple pages, page width, Navigation pane, rulers, gridlines, dark mode; interface in English, 简体中文, 繁體中文, 日本語, Português (Brasil), Español or Українська (follows the system language by default) |
+| **Files** | .docx read/write (opens in Word), PDF export, .odt, .rtf, .html, .md, .tex, .txt import/export, page images |
+
+## For agents: CLI and MCP
+
+WordCraft was designed to be driven by people *and* by AI agents.
+
+```sh
+claude mcp add wordcraft -- wordcraft-cli mcp                  # headless documents
+wordcraft --control 7981 &                                     # or drive the running app…
+claude mcp add wordcraft-app -- wordcraft-cli mcp --connect 127.0.0.1:7981
+```
+
+Tools include `list_commands`, `execute`, `batch`, `type_text`, `select_text`, `inspect_document`,
+`render_page`, `save_document`, and, with a running app, `screenshot`, `click` and `key`. Agents
+can check their work through `inspect_document` without screenshots. See [docs/mcp.md](docs/mcp.md)
+and the [control protocol](docs/control-protocol.md). Macros record any sequence of commands and
+play it back (`tools.recordMacro`, `tools.macros`).
+
+## Logs
+
+The desktop app writes its log records to standard error and to `logs/wordcraft.log` next to its
+preferences: on Linux `$XDG_CONFIG_HOME/wordcraft/logs/` (by default `~/.config/wordcraft/logs/`),
+on macOS `~/Library/Application Support/WordCraft/logs/`, on Windows `%APPDATA%\WordCraft\logs\`.
+A start from a desktop menu or the Dock has no terminal, so this file is what to attach to a bug
+report: unreadable parts of a .docx, pictures or fonts a PDF export had to leave out and panics the
+command guard recovered from land there. Each launch moves the previous log to `wordcraft.1.log`
+(and that one to `wordcraft.2.log`), so the log of a run that crashed survives the next start; a
+log stops growing at 16 MiB. `--version` writes no file, and runs with `WORDCRAFT_NO_PREFS` (agents'
+test runs) log to standard error only. Document text is never logged; a panic message leaves out
+the text it quotes.
+
+By default WordCraft's own crates log at `info` and everything else at `warn`. `RUST_LOG` replaces
+that with env_logger-style directives, for example `RUST_LOG=debug`,
+`RUST_LOG=warn,wordcraft_docx=trace` or `RUST_LOG=info,wgpu_core=warn`; a directive ending in `*`
+covers every target starting with it (`wordcraft*=debug`). The logger is
+`apps/wordcraft/src/logging.rs`.
+
+## Architecture
+
+| Layer | Crate | Job |
+|---|---|---|
+| L0 | `wordcraft-geom` | units and measurements |
+| L1 | `wordcraft-doc`, `wordcraft-fonts`, `wordcraft-proof` | document model and editing; fonts and shaping; spelling, grammar, hyphenation |
+| L2 | `wordcraft-layout`, `wordcraft-docx`, `wordcraft-formats` | line breaking, pagination, tables, notes, hit testing; OOXML; ODT/RTF/HTML/Markdown/TXT |
+| L3 | `wordcraft-render`, `wordcraft-pdf` | rasteriser (vello_cpu); PDF (krilla) |
+| L4 | `wordcraft-engine` | session, undo, 389 commands, Word feature catalog |
+| L5 | `wordcraft-mcp` | MCP server |
+| L6 | `wordcraft-ui-egui` | the Word-style front end (swappable) |
+| apps | `wordcraft`, `wordcraft-cli`, `wordcraft-web` | desktop, command line, browser |
+
+## Roadmap
+
+WordCraft covers 87% of Word's ribbon features with commands today; counting depth and
+fidelity, we estimate about 62% of real feature parity. An alpha for everyday writing is close:
+the remaining work is mostly testing against real-world .docx files, native printing and the
+first signed builds. Charts, SmartArt, the equation editor and the Draw tab come after.
+
+## License and credits
+
+WordCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+Copyright (c) 2026 ArtCraft Team and the WordCraft contributors. Required notices are in [NOTICE](NOTICE).
